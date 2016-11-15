@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
+import NavBar from './NavBar';
+import EntryList from './EntryList';
 
-export default class App extends React.Component {
+export default class App extends Component {
   constructor() {
     super();
 
@@ -15,7 +17,7 @@ export default class App extends React.Component {
     console.log('inside getSubreddit');
     fetch(`http://www.reddit.com/r/aww/hot.json`)
       .then(res => res.json())
-      .then(body => console.log('body', body.data.children))
+      .then(body => this.setState({ default: body.data.children }))
       .catch(err => console.log('error', err));
   }
 
@@ -23,6 +25,8 @@ export default class App extends React.Component {
     return (
       <div className='App'>
         Reddit Reader
+        <NavBar />
+        <EntryList entries={this.state.default} />
       </div>
     );
   }
