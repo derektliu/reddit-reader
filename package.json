@@ -1,0 +1,19 @@
+{
+  "name": "reddit-reader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derektliu/reddit-reader.git"
+  },
+  "author": "Derek Liu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/derektliu/reddit-reader/issues"
+  },
+  "homepage": "https://github.com/derektliu/reddit-reader#readme"
+}
