@@ -7,25 +7,58 @@ export default class App extends Component {
     super();
 
     this.state = {
-      default: []
+      entries: [],
+      subreddits: {}
     };
 
+    this.addSubreddit = this.addSubreddit.bind(this);
+    this.removeSubreddit = this.removeSubreddit.bind(this)
+  }
+
+  componentWillMount () {
     this.getSubreddit();
   }
 
   getSubreddit() {
-    fetch(`http://www.reddit.com/r/aww/hot.json`)
+    fetch(`http://www.reddit.com/.json`)
       .then(res => res.json())
-      .then(body => this.setState({ default: body.data.children }))
+      .then(body => {
+        var subreddits = {};
+        body.data.children.forEach(post => {
+          subreddits[post.data.subreddit] = post.data.subreddit;
+        });
+        this.setState({
+          entries: body.data.children,
+          subreddits: subreddits
+        })
+      })
       .catch(err => console.log('error', err));
+  }
+
+  addSubreddit(title) {
+    console.log('inside addSubreddit', title);
+    fetch(`http://www.reddit.com/r/${title}/hot.json`)
+    .then(res => res.json())
+    .then(body => {
+      console.log(body.data.children)
+    })
+    .catch(err => console.log('error', err));
+  }
+
+  removeSubreddit(title) {
+    delete this.state.subreddits[title];
+    this.setState({
+      entries: this.state.entries.filter( ({data}) => data.subreddit !== title ),
+      subreddits: this.state.subreddits
+    });
   }
 
   render() {
     return (
       <div className='App'>
         Reddit Reader
-        <NavBar />
-        <EntryList entries={this.state.default} />
+        <NavBar subreddits={this.state.subreddits} add={this.addSubreddit} remove={this.removeSubreddit}/>
+        <EntryList entries={this.state.entries} />
       </div>
     );
   }
