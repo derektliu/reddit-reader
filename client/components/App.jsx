@@ -14,7 +14,6 @@ export default class App extends Component {
   }
 
   getSubreddit() {
-    console.log('inside getSubreddit');
     fetch(`http://www.reddit.com/r/aww/hot.json`)
       .then(res => res.json())
       .then(body => this.setState({ default: body.data.children }))

@@ -5,13 +5,13 @@ export default class EntryList extends Component {
 
   render() {
     var entries = [];
-
     this.props.entries.forEach( entry => {
       entries.push(<Entry content={entry.data} key={entry.data.id}/>)
     });
+
     return (
       <div className='entrylist'>
-        {entries}
+        { entries }
       </div>
     );
   }
