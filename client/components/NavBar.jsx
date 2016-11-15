@@ -40,6 +40,7 @@ export default class NavBar extends Component {
             />
           <input type="submit" value="Add"/>
           </form>
+          <br/>
         <SubredditList list={this.props.subreddits} remove={this.props.remove}/>
       </div>
     );
