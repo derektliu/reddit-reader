@@ -31,7 +31,7 @@ export default class NavBar extends Component {
     return (
       <div className='navbar'>
         <form onSubmit={this.handleSubmit}>
-          Add Subreddit:
+          Add Subreddit: /r/
           <input
             type='text'
             placeholder='Subreddit Name'
