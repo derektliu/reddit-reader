@@ -5,7 +5,6 @@ export default class EntryList extends Component {
 
   render() {
     var entries = [];
-    console.log('entries', this.props.entries);
     this.props.entries.forEach( entry => {
       entries.push(<Entry content={entry.data} key={entry.data.id}/>)
     });
