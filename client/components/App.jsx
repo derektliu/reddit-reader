@@ -53,7 +53,7 @@ export default class App extends Component {
     let entries = [];
     let promises = [];
     for (let key in this.state.subreddits) {
-      promises.push(fetch(`https://www.reddit.com/r/${key}/hot.json`)
+      promises.push(fetch(`https://www.reddit.com/r/${key}/hot.json?limit=10`)
       .then(res => res.json())
       .then(body => {
         entries = entries.concat(body.data.children);
@@ -66,7 +66,7 @@ export default class App extends Component {
 
   // grab 'What's Hot' entries from a single subreddit
   getSubreddit(title) {
-    fetch(`https://www.reddit.com/r/${title}/hot.json`)
+    fetch(`https://www.reddit.com/r/${title}/hot.json?limit=10`)
     .then(res => res.json())
     .then(body => this.sortEntries(this.state.entries.concat(body.data.children)))
     .catch(err => console.log('error', err));
