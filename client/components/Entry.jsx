@@ -2,11 +2,6 @@ import React, {Component} from 'react';
 
 const Entry = ({content}) => {
 
-  var isUrl = (s) => {
-   var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
-   return regexp.test(s);
- }
-
   if (content.thumbnail.indexOf('http') === -1) {
     content.thumbnail = 'https://apprecs.org/ios/images/app-icons/256/25/923394341.jpg';
   }
